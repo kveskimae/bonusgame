@@ -8,10 +8,10 @@ import org.springframework.context.ApplicationContext;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
-public class SimulationRunner {
+public class Simulation {
 
 	public static void main(String[] args) {
-		ApplicationContext ctx = SpringApplication.run(SimulationRunner.class, args);
+		ApplicationContext ctx = SpringApplication.run(Simulation.class, args);
 
 		BonusGameSimulation simulation = ctx.getBean(BonusGameSimulation.class);
 

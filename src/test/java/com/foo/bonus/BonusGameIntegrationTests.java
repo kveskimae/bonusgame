@@ -1,6 +1,6 @@
 package com.foo.bonus;
 
-import com.foo.SimulationRunner;
+import com.foo.Simulation;
 import com.foo.random.TestRandomConfiguration;
 import com.foo.random.TestRandomService;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = {SimulationRunner.class, TestRandomConfiguration.class})
+@SpringBootTest(classes = {Simulation.class, TestRandomConfiguration.class})
 public class BonusGameIntegrationTests {
 
 	@Autowired
