@@ -12,20 +12,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class BonusGameDataIntegrationTests {
+class BonusGameDataIntegrationTests {
 
 	@Autowired
 	private BonusGameData data;
 
 	@Test
-	public void contextLoads() {
+	void contextLoads() {
 		assertNotNull(data);
 
 		assertNotNull(data.getStateMachine());
 	}
 
 	@Test
-	public void stateInfoIsCorrectAfterReset() {
+	void stateInfoIsCorrectAfterReset() {
 		data.resetRewards();
 
 		assertEquals(0, data.getPickedRewards().size());
@@ -34,7 +34,7 @@ public class BonusGameDataIntegrationTests {
 	}
 
 	@Test
-	public void rewardsRetrievesCorrectCollection() {
+	void rewardsRetrievesCorrectCollection() {
 		data.resetRewards();
 
 		data.getStateMachine().start();

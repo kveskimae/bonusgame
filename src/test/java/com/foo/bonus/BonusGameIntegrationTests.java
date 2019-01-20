@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = {Simulation.class, TestRandomConfiguration.class})
-public class BonusGameIntegrationTests {
+class BonusGameIntegrationTests {
 
 	@Autowired
 	private BonusGame game;
@@ -23,14 +23,14 @@ public class BonusGameIntegrationTests {
 	private TestRandomService testRandomService;
 
 	@BeforeEach
-	public void initGame() {
+	void initGame() {
 		assertNotNull(game); // check that context loads
 
 		game.reset();
 	}
 
 	@Test
-	public void correctInfoAfterReset() {
+	void correctInfoAfterReset() {
 		assertEquals(BonusGameState.OPENING_BOXES, game.getData().getState());
 
 		assertEquals(12, game.getData().getUnopenedBoxes().size());
@@ -39,7 +39,7 @@ public class BonusGameIntegrationTests {
 	}
 
 	@Test
-	public void gameIsOverOnlyAfterAdditionalReward() {
+	void gameIsOverOnlyAfterAdditionalReward() {
 		assertFalse(game.isGameOver());
 
 		game.getData().getStateMachine().sendEvent(BonusGameRewardEvent.SHOW_GAME_OVER);
@@ -52,7 +52,7 @@ public class BonusGameIntegrationTests {
 	}
 
 	@Test
-	public void pickRewardAddsPickedRewards() {
+	void pickRewardAddsPickedRewards() {
 		assertEquals(0, game.getData().getPickedRewards().size());
 
 		testRandomService.setNextElementToPick(BonusGameRewardEvent.WIN_5);
@@ -69,7 +69,7 @@ public class BonusGameIntegrationTests {
 	}
 
 	@Test
-	public void additionalRewardsCorrectAfterSecondChance() {
+	void additionalRewardsCorrectAfterSecondChance() {
 		assertEquals(BonusGameState.OPENING_BOXES, game.getData().getState());
 
 		testRandomService.setNextElementToPick(BonusGameRewardEvent.SHOW_GAME_OVER);
@@ -83,7 +83,7 @@ public class BonusGameIntegrationTests {
 	}
 
 	@Test
-	public void boxesCorrectAfterSecondChance() {
+	void boxesCorrectAfterSecondChance() {
 		assertEquals(BonusGameState.OPENING_BOXES, game.getData().getState());
 
 		testRandomService.setNextElementToPick(BonusGameRewardEvent.SHOW_GAME_OVER);
@@ -96,7 +96,7 @@ public class BonusGameIntegrationTests {
 	}
 
 	@Test
-	public void pickRewardShiftsStates() {
+	void pickRewardShiftsStates() {
 		assertEquals(BonusGameState.OPENING_BOXES, game.getData().getState());
 
 		testRandomService.setNextElementToPick(BonusGameRewardEvent.WIN_5);
